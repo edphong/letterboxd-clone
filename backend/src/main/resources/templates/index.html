@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Data</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 20px;
+    }
+    .review {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+    .author {
+      font-weight: bold;
+    }
+    .rating {
+      color: #f39c12;
+    }
+    .review-content {
+      margin: 10px 0;
+    }
+    .timestamp {
+      font-size: 0.9em;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>API Data</h1>
+  
+  <h2>Movie Details</h2>
+  <pre id="movieDetails">Loading movie details...</pre>
+  
+  <h2>Movie Reviews</h2>
+  <div id="movieReviews">Loading movie reviews...</div>
+  
+  <script>
+    // URLs of the API endpoints
+    const detailsUrl = 'http://localhost:8080/api/movies/details/1241982';
+    const reviewsUrl = 'http://localhost:8080/api/movies/reviews/1241982';
+
+    // Fetch movie details
+    fetch(detailsUrl)
+      .then(response => response.json())  // Parse the response as JSON
+      .then(data => {
+        const movieDetailsElement = document.getElementById('movieDetails');
+        movieDetailsElement.textContent = JSON.stringify(data, null, 2); // Format nicely
+      })
+      .catch(error => {
+        const movieDetailsElement = document.getElementById('movieDetails');
+        movieDetailsElement.textContent = `Error fetching movie details: ${error.message}`;
+      });
+
+    // Fetch movie reviews
+    fetch(reviewsUrl)
+      .then(response => response.json())  // Parse the response as JSON
+      .then(data => {
+        const movieReviewsElement = document.getElementById('movieReviews');
+        movieReviewsElement.innerHTML = ""; // Clear existing content
+
+        if (data.length > 0) {
+          // Loop through each review and create HTML
+          data.forEach(review => {
+            const reviewElement = document.createElement('div');
+            reviewElement.classList.add('review');
+
+            // Author details
+            const authorDetails = `
+              <p class="author">Author: ${review.author || 'Unknown'}</p>
+              <p class="rating">Rating: ${review.author_details?.rating || 'N/A'}</p>
+            `;
+
+            // Review content
+            const content = `
+              <div class="review-content">${review.content || 'No content provided.'}</div>
+            `;
+
+            // Timestamp
+            const timestamp = `
+              <p class="timestamp">Created at: ${new Date(review.created_at).toLocaleString()}</p>
+            `;
+
+            // Combine and append
+            reviewElement.innerHTML = authorDetails + content + timestamp;
+            movieReviewsElement.appendChild(reviewElement);
+          });
+        } else {
+          movieReviewsElement.textContent = "No reviews available for this movie.";
+        }
+      })
+      .catch(error => {
+        const movieReviewsElement = document.getElementById('movieReviews');
+        movieReviewsElement.textContent = `Error fetching movie reviews: ${error.message}`;
+      });
+  </script> 
+
+</body>
+</html>
