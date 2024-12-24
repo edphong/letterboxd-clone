@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import "./MovieDetails.css";
+import "../styles/MovieDetails.css";
+import "../styles/Dashboard.css";
 
 const MovieDetails = () => {
     const { movieId } = useParams();
@@ -33,11 +34,9 @@ const MovieDetails = () => {
 
     if (loadingReviews || !movie) {
         return (
-            <div className="movie-container">
-                <h1> myBacklog </h1>
-                <h2>Loading movie details...</h2> {/* Display spinner here */}
-                <p className="loading-text">Loading...</p>
-            </div>
+            <div className="spinner-container">
+            <div className="spinner"></div>
+        </div>
         );
     }
 

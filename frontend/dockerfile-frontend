@@ -1,0 +1,27 @@
+# ----- Frontend -----
+FROM node:alpine as frontend-build
+
+WORKDIR /app
+
+# copies package.json and package-lock.json
+COPY frontend/package*.json ./
+
+# copy the source files
+COPY frontend/ . ./ 
+
+# build our react application
+RUN npm run build
+
+# Stage 2: Serve the application
+FROM nginx:alpine
+
+# Copy the built React app to Nginx's default HTML directory, where the issue lies 
+COPY --from=frontend-build /app/build /usr/share/nginx/html
+
+# Expose port
+EXPOSE 80
+
+# Start Nginx
+CMD ["nginx", "-g", "daemon off;"]
+
+

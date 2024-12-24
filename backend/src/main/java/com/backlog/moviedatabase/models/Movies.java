@@ -2,7 +2,7 @@ package com.backlog.moviedatabase.models;
 
 import java.util.List;
 
-public class TrendingMovies {
+public class Movies {
     private int page;
     private List<Movie> results; // List of movies
     private int totalPages;

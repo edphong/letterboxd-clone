@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
-@RestController
+@RestController // GET method 
 @RequestMapping("/api/movies") // concerned with grabbing movie ID's for movie reviews 
 public class MovieReviewController {
 
