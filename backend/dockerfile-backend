@@ -29,3 +29,5 @@ EXPOSE 8080
 
 # Command to run the Spring Boot application
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+
+# docker run -p 8080:8080 --name backend backend: run backend command 

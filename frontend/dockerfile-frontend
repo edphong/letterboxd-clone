@@ -6,8 +6,11 @@ WORKDIR /app
 # copies package.json and package-lock.json
 COPY package*.json ./
 
-# install all dependecies inside pack.json 
-RUN npm install 
+# Install React 18 and react-router-dom to ensure compatibility
+RUN npm install react@18 react-dom@18 react-router-dom
+
+# Install the rest of the dependencies
+RUN npm install
 
 # copy application files to the container 
 COPY . . 
