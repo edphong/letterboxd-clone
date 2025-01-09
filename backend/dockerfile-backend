@@ -1,32 +1,31 @@
-# Use OpenJDK 23 for the base image
-FROM docker.io/library/openjdk:23-jdk-slim as stage-1
-
-# Working directory for the application
-WORKDIR /app
-
-# Copy the backend directory contents to the working directory
-COPY backend/ ./
-
-# Use Maven to build the backend
+# Stage 1: Build the backend application using Maven
 FROM docker.io/library/maven:3.9-eclipse-temurin-17 as backend-build
 
+# Set the working directory for the backend build stage
 WORKDIR /app
+
+# Copy the pom.xml and download dependencies for offline usage
 COPY pom.xml .
 RUN mvn dependency:go-offline -B
+
+# Copy the rest of the application files and build the application
 COPY . .
 RUN mvn package -DskipTests
 
-# Stage-1: Base image with OpenJDK, configure environment to include the .env file from the backend directory
-FROM docker.io/library/openjdk:23-jdk-slim as stage-2
+# Stage 2: Use OpenJDK base image for the runtime environment
+FROM docker.io/library/openjdk:23-jdk-slim as runtime
 
+# Set the working directory
 WORKDIR /app
+
+# Copy the packaged .jar file from the build stage
 COPY --from=backend-build /app/target/*.jar /app/app.jar
 
-# Set the environment variable for the application to load .env file from backend
-ENV SPRING_APPLICATION_JSON=:".env"
+# API keys
+COPY .env /app/.env
 
-# Expose the port the application runs on
+# Frontend is on port 8080, so we use 8081
 EXPOSE 8080
 
-# Run the application
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Command to run the Spring Boot application
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
