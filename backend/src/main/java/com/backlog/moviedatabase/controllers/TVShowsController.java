@@ -32,7 +32,7 @@ public class TVShowsController {
         return response.getResults();
     }
     
-    @GetMapping("/airing-today")
+    /* @GetMapping("/airing-today")
     public List<TVShow> getAiringToday() {
         String apiKey = apiKeyProvider.getApiKey();
         String getAiringAPI = "https://api.themoviedb.org/3/tv/airing_today?language=en-US&page=1" + apiKey;
@@ -48,7 +48,7 @@ public class TVShowsController {
         TVShows response = restTemplate.getForObject(getOnTheAirAPI, TVShows.class);
         
         return response.getResults();
-    }
+    } */
 
     @GetMapping("/top-rated")
     public List<TVShow> getTopRated() {
