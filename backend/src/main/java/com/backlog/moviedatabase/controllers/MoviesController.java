@@ -57,7 +57,5 @@ public class MoviesController {
 
         return response.getResults(); 
     }
-
 }
 
-// package com.backlog.moviedatabase.models;

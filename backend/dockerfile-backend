@@ -24,10 +24,8 @@ COPY --from=backend-build /app/target/*.jar /app/app.jar
 # API keys
 COPY .env /app/.env
 
-# Frontend is on port 8080, so we use 8081
 EXPOSE 8080
 
 # Command to run the Spring Boot application
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]
 
-# docker run -p 8080:8080 --name backend backend: run backend command 
