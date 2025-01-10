@@ -1,13 +1,12 @@
-/* Global body styles */
-body {
-    font-family: 'Montserrat', sans-serif; /* Uses Montserrat as the primary font */
-    font-size: 16px; /* Optional: set a universal font size */
-    overflow-x: hidden; /* Disable horizontal scrolling on the entire page */
-    margin: 0; /* Ensure there's no default margin causing overflow */
-}
+/* dashboard.css */
 
-/* Dashboard container styles */
+/* Import Montserrat font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+/* Apply the font to the dashboard specifically */
 .dashboard-container {
+    font-family: 'Montserrat', sans-serif; /* Apply only to the dashboard */
+    color: #FFFFFF; /* Set text color to white */
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -16,25 +15,18 @@ body {
     margin-bottom: 10px;
     width: 100%;
     max-width: 100vw; /* Prevent the container from going beyond the viewport width */
+    overflow-x: hidden; /* Prevent horizontal scrolling in the container */
+    box-sizing: border-box; /* Include padding in width calculation */
 }
 
 /* Poster grid style for displaying posters */
 .poster-grid {
-    display: flex;
-    flex-wrap: wrap; /* Allow wrapping to avoid overflow */
-    gap: 15px; /* Space between items */
-    justify-content: center; /* Center the posters */
-    width: 100%; /* Ensure it takes the full container width */
+    display: grid;
+    grid-template-columns: repeat(10, 1fr); /* 10 equal columns */
+    gap: 20px; /* Space between posters */
+    justify-content: center; /* Center the grid items */
     padding: 0 10px; /* Optional padding to prevent edges from touching */
     box-sizing: border-box; /* Include padding in width calculation */
-}
-
-/* Section header style */
-.dashboard-container h2 {
-    text-align: left;
-    width: 100%;
-    margin: 0 0 10px 0;
-    padding-left: 270px;
 }
 
 /* Common style for posters */
@@ -42,6 +34,16 @@ body {
     width: 150px;
     height: 250px;
     border-radius: 2%;
+}
+
+/* Section header style */
+.dashboard-container h2 {
+    font-family: 'Montserrat', sans-serif; /* Ensure headers use the Montserrat font */
+    text-align: left;
+    width: 100%;
+    margin: 0 0 10px 0;
+    padding-left: 190px;
+    color: #FFFFFF; /* Set header text color to white */
 }
 
 /* Spinner container */
@@ -55,7 +57,7 @@ body {
 /* Spinner animation */
 .spinner {
     border: 8px solid #f3f3f3;
-    border-top: 8px solid #3498db;
+    border-top: 8px solid #1e3a8a;
     border-radius: 50%;
     width: 50px;
     height: 50px;
@@ -70,4 +72,20 @@ body {
     100% {
         transform: rotate(360deg);
     }
+}
+
+.backdrop-container {
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center;     /* Vertically center */
+    height: 500px;           /* You can adjust this height */
+    width: 100%;
+    overflow: hidden;        /* To prevent the image from overflowing the container */
+}
+
+.backdrop-image {
+    width: auto; /* Allows the image to maintain its aspect ratio */
+    height: 100%; /* Adjusts the height to fit within the container */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 70%, #1a1a1a);
+    filter: brightness(0.8); /* Optional: Dim the image to blend with the background */
 }

@@ -1,0 +1,47 @@
+/* Global styles for the navbar */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #1e3a8a; /* Letterboxd-like blue */
+    color: white;
+}
+
+/* Styles for the logo */
+.navbar-logo {
+    font-size: 24px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Styles for the search input */
+.navbar-search {
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+    position: relative; /* To position the icon inside the search bar */
+}
+
+.search-input {
+    padding: 3px 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    width: 200px;
+    transition: width 0.3s ease-in-out; /* Smooth transition for focus effect */
+}
+
+/* On focus, expand the search input */
+.search-input:focus {
+    outline: none;
+    width: 300px;
+}
+
+/* Styles for the search icon */
+.search-icon {
+    position: absolute;
+    right: 10px; /* Position the icon to the right inside the search bar */
+    color: white; /* Icon color */
+    font-size: 18px; /* Icon size */
+    pointer-events: none; /* Make sure the icon doesn't interfere with input interactions */
+}

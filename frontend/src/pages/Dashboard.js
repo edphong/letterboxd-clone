@@ -7,27 +7,31 @@ const Dashboard = () => {
     const [movies, setMovies] = useState([]);
     const [tvShows, setTvShows] = useState([]);
     const [nowShowingMovies, setNowShowingMovies] = useState([]);
-    const [upcomingMovies, setUpcomingMovies] = useState([]); // State for upcoming movies
+    const [backdropImage, setBackdropImage] = useState(""); // State for the backdrop image
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchNowShowingMovies = axios.get("http://localhost:8080/api/movies/now-showing");
         const fetchTrendingMovies = axios.get("http://localhost:8080/api/movies/trending");
-        const fetchUpcomingMovies = axios.get("http://localhost:8080/api/movies/upcoming"); // Corrected URL
         const fetchTrendingTVShows = axios.get("http://localhost:8080/api/tv/trending");
 
         Promise.all([
             fetchTrendingMovies,
             fetchNowShowingMovies,
-            fetchUpcomingMovies,
             fetchTrendingTVShows,
         ])
-            .then(([trendingMoviesRes, nowShowingMoviesRes, upcomingMoviesRes, trendingShowsRes]) => {
-                setMovies(trendingMoviesRes.data.slice(0, 10));
-                setNowShowingMovies(nowShowingMoviesRes.data.slice(0, 10));
-                setUpcomingMovies(upcomingMoviesRes.data.slice(0, 10)); // Set state for upcoming movies
-                setTvShows(trendingShowsRes.data.slice(0, 10));
+            .then(([trendingMoviesRes, nowShowingMoviesRes, trendingShowsRes]) => {
+                setMovies(trendingMoviesRes.data.slice(0, 20));
+                setNowShowingMovies(nowShowingMoviesRes.data.slice(0, 20));
+                setTvShows(trendingShowsRes.data.slice(0, 20));
+
+                // Set the backdrop image from the first movie (or choose another)
+                if (trendingMoviesRes.data.length > 0) {
+                    const backdrop = trendingMoviesRes.data[0].backdrop_path;
+                    setBackdropImage(backdrop);
+                }
+
                 setLoading(false);
             })
             .catch((err) => {
@@ -46,9 +50,20 @@ const Dashboard = () => {
 
     return (
         <div>
+            {/* Backdrop Image Section */}
+            {backdropImage && (
+                <div className="backdrop-container">
+                    <img
+                        src={`https://image.tmdb.org/t/p/original${backdropImage}`}
+                        alt="Backdrop"
+                        className="backdrop-image"
+                    />
+                </div>
+            )}
+
             {/* Now Showing Section */}
             <div className="dashboard-container">
-                <h2>Now Showing</h2>
+                <h2>NOW SHOWING</h2>
                 {error ? (
                     <p style={{ color: "red" }}>{error}</p>
                 ) : (
@@ -68,7 +83,7 @@ const Dashboard = () => {
 
             {/* Trending Movies Section */}
             <div className="dashboard-container">
-                <h2>Trending Movies Today</h2>
+                <h2>TRENDING MOVIES</h2>
                 {error ? (
                     <p style={{ color: "red" }}>{error}</p>
                 ) : (
@@ -86,29 +101,9 @@ const Dashboard = () => {
                 )}
             </div>
 
-            {/* Upcoming Movies Section */}
-            <div className="dashboard-container">
-                <h2>Upcoming Movies</h2>
-                {error ? (
-                    <p style={{ color: "red" }}>{error}</p>
-                ) : (
-                    <div className="poster-grid">
-                        {upcomingMovies.map((movie) => (
-                            <Link key={movie.id} to={`/movie/${movie.id}`} className="movie-item">
-                                <img
-                                    src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-                                    alt={movie.title}
-                                    className="poster"
-                                />
-                            </Link>
-                        ))}
-                    </div>
-                )}
-            </div>
-
             {/* Trending TV Shows Section */}
             <div className="dashboard-container">
-                <h2>Trending TV Shows Today</h2>
+                <h2>TRENDING TV SHOWS</h2>
                 {error ? (
                     <p style={{ color: "red" }}>{error}</p>
                 ) : (
