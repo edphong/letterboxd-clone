@@ -4,8 +4,10 @@
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
-    background-color: #1e3a8a; /* Letterboxd-like blue */
-    color: white;
+    background: transparent; /* Make the navbar background transparent */
+    position: absolute; /* Optional: This can ensure the navbar stays on top and doesn't push content */
+    z-index: 10; /* Optional: Ensures the navbar stays above other elements */
+    width: 94%;
 }
 
 /* Styles for the logo */
@@ -13,6 +15,11 @@
     font-size: 24px;
     font-weight: 600;
     cursor: pointer;
+    margin-left: 100px; /* Move content 20px to the right */
+}
+
+.navbar-logo:hover { 
+    color: grey;
 }
 
 /* Styles for the search input */
@@ -45,3 +52,5 @@
     font-size: 18px; /* Icon size */
     pointer-events: none; /* Make sure the icon doesn't interfere with input interactions */
 }
+
+

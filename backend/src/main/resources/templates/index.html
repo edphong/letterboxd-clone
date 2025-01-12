@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TV Show Details</title>
+  <title>Upcoming and Trending Movies and TV Shows</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -14,23 +14,40 @@
 </head>
 <body>
 
-  <h2>TV Show Details</h2>
-  <pre id="tvShowDetails">Loading TV show details...</pre>
-  
-  <script>
-    // URL of the API endpoint for a specific TV show details
-    const detailsUrl = 'http://localhost:8080/api/tv/details/249522'; // Replace with your details endpoint
+  <h2>Trending Movies</h2>
+  <pre id="trendingMoviesDetails">Loading trending movie details...</pre>
 
-    // Fetch TV show details
-    fetch(detailsUrl)
-      .then(response => response.json())  // Parse the response as JSON
+  <h2>Trending TV Shows</h2>
+  <pre id="trendingTvShowsDetails">Loading trending TV shows details...</pre>
+
+  <script>
+    // URLs of the API endpoints
+    const trendingMoviesUrl = 'http://localhost:8080/api/movies/trending'; 
+    const trendingTvShowsUrl = 'http://localhost:8080/api/tv-shows/trending'; 
+
+
+    // Fetch trending movies details
+    fetch(trendingMoviesUrl)
+      .then(response => response.json()) 
       .then(data => {
-        const tvShowDetailsElement = document.getElementById('tvShowDetails');
-        tvShowDetailsElement.textContent = JSON.stringify(data, null, 2); // Format nicely
+        const trendingMoviesDetailsElement = document.getElementById('trendingMoviesDetails');
+        trendingMoviesDetailsElement.textContent = JSON.stringify(data, null, 2); 
       })
       .catch(error => {
-        const tvShowDetailsElement = document.getElementById('tvShowDetails');
-        tvShowDetailsElement.textContent = `Error fetching TV show details: ${error.message}`;
+        const trendingMoviesDetailsElement = document.getElementById('trendingMoviesDetails');
+        trendingMoviesDetailsElement.textContent = `Error fetching trending movie details: ${error.message}`;
+      });
+
+    // Fetch trending TV shows details
+    fetch(trendingTvShowsUrl)
+      .then(response => response.json()) 
+      .then(data => {
+        const trendingTvShowsDetailsElement = document.getElementById('trendingTvShowsDetails');
+        trendingTvShowsDetailsElement.textContent = JSON.stringify(data, null, 2); 
+      })
+      .catch(error => {
+        const trendingTvShowsDetailsElement = document.getElementById('trendingTvShowsDetails');
+        trendingTvShowsDetailsElement.textContent = `Error fetching trending TV show details: ${error.message}`;
       });
   </script>
 

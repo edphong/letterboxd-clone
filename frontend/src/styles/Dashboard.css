@@ -42,7 +42,7 @@
     text-align: left;
     width: 100%;
     margin: 0 0 10px 0;
-    padding-left: 190px;
+    padding-left: 80px;
     color: #FFFFFF; /* Set header text color to white */
 }
 
@@ -75,17 +75,276 @@
 }
 
 .backdrop-container {
+    position: relative;
     display: flex;
-    justify-content: center; /* Horizontally center */
-    align-items: center;     /* Vertically center */
-    height: 500px;           /* You can adjust this height */
+    justify-content: flex-start; /* Align content to the bottom-left */
+    align-items: flex-end;
+    height: 80vh; /* Adjust to desired height */
     width: 100%;
-    overflow: hidden;        /* To prevent the image from overflowing the container */
+    overflow: hidden; /* Prevent image overflow */
 }
 
+/* Backdrop image with fade effect */
 .backdrop-image {
-    width: auto; /* Allows the image to maintain its aspect ratio */
-    height: 100%; /* Adjusts the height to fit within the container */
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 70%, #1a1a1a);
-    filter: brightness(0.8); /* Optional: Dim the image to blend with the background */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Maintain aspect ratio while filling the container */
+    z-index: 1;
+    mask-image: 
+        linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 70%);
+    transition: opacity .3s;
 }
+
+
+/* Apply the font to the dashboard specifically */
+.dashboard-container {
+    font-family: 'Montserrat', sans-serif; /* Apply only to the dashboard */
+    color: #FFFFFF; /* Set text color to white */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 100vw; /* Prevent the container from going beyond the viewport width */
+    overflow-x: hidden; /* Prevent horizontal scrolling in the container */
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+/* Poster grid style for displaying posters */
+.poster-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr); /* 10 equal columns */
+    gap: 20px; /* Space between posters */
+    justify-content: center; /* Center the grid items */
+    padding: 0 10px; /* Optional padding to prevent edges from touching */
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+/* Common style for posters */
+.poster {
+    width: 150px;
+    height: 250px;
+    border-radius: 2%;
+}
+
+/* Section header style */
+.dashboard-container h2 {
+    font-family: 'Montserrat', sans-serif; /* Ensure headers use the Montserrat font */
+    text-align: left;
+    width: 100%;
+    margin: 0 0 10px 0;
+    padding-left: 190px;
+    color: #FFFFFF; /* Set header text color to white */
+}
+
+/* Spinner container */
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Spinner animation */
+.spinner {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #1e3a8a;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+/* Keyframes for spinner rotation */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.hero-buttons .hero-button {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.hero-buttons .hero-button:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+}
+
+.hero-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.hero-button.play {
+    background-color: #e50914; /* Netflix red */
+}
+
+.hero-button.list {
+    background-color: rgba(255, 255, 255, 0.3); /* Transparent white */
+}
+
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 10;
+    padding: 10px;
+}
+
+.carousel-arrow:hover {
+    color: grey;
+}
+
+.carousel-arrow.left {
+    left: 20px;
+}
+
+.carousel-arrow.right {
+    right: 20px;
+}
+
+/* Content overlay on top of the backdrop */
+.hero-content {
+    position: relative; /* Keep the relative positioning */
+    z-index: 3;
+    color: white;
+    padding: 20px;
+    max-width: 50%;
+    margin-left: 100px; /* Move content 20px to the right */
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    font-weight: bold; /* Making the title bold */
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    color: grey;
+}
+
+.hero-content h2 {
+    margin-right: 8px;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    color: grey;
+    font-weight: 500; /* Slightly lighter than the title */
+    display: inline-block; /* Align it with the title properly */
+}
+
+.rating-container {
+    display: flex;
+    align-items: center;
+}
+
+
+.hero-button.play {
+    background-color: #e50914; /* Netflix red */
+}
+
+.hero-button.list {
+    background-color: rgba(255, 255, 255, 0.3); /* Transparent white */
+}
+
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 10;
+    padding: 10px;
+}
+
+.carousel-arrow:hover {
+    color: grey;
+}
+
+.carousel-arrow.left {
+    left: 20px;
+}
+
+.carousel-arrow.right {
+    right: 20px;
+}
+
+.dots-container {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 3;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dot.active {
+    background-color: white;
+}
+
+.carousel-container {
+    position: relative;
+}
+
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0);
+    color: white;
+    border: none;
+    font-size: 2rem;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.carousel-arrow.left {
+    left: 10px;
+}
+
+.carousel-arrow.right {
+    right: 10px;
+}
+
