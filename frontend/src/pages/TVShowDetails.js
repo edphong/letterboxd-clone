@@ -12,7 +12,7 @@ const TVShowDetails = () => {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:8080/api/tv/details/${tvShowId}`)
+            .get(`http://localhost:8080/api/tv-shows/details/${tvShowId}`)
             .then((response) => {
                 setTvShow(response.data);
                 setLoading(false); // Stop loading when data is fetched

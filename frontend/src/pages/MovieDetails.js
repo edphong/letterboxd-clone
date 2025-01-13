@@ -34,9 +34,9 @@ const MovieDetails = () => {
 
     if (loadingReviews || !movie) {
         return (
-            <div className="spinner-container">
-            <div className="spinner"></div>
-        </div>
+            <div>
+            {/*  add future loading symbol */}
+            </div>
         );
     }
 

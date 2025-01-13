@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 
 @RestController // GET method
-@RequestMapping("/api/tv")
+@RequestMapping("/api/tv-shows")
 public class TVShowReviewController {
 
     @Autowired

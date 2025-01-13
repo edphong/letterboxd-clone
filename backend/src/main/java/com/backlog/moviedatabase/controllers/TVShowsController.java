@@ -14,7 +14,7 @@ import java.util.List;
 
 
 @RestController // GET method 
-@RequestMapping("/api/tv") 
+@RequestMapping("/api/tv-shows") 
 public class TVShowsController {
 
     @Autowired
@@ -32,10 +32,10 @@ public class TVShowsController {
         return response.getResults();
     }
     
-    /* @GetMapping("/airing-today")
+    @GetMapping("/airing-today")
     public List<TVShow> getAiringToday() {
         String apiKey = apiKeyProvider.getApiKey();
-        String getAiringAPI = "https://api.themoviedb.org/3/tv/airing_today?language=en-US&page=1" + apiKey;
+        String getAiringAPI = "https://api.themoviedb.org/3/tv/airing_today?language=en-US&page=1&api_key=" + apiKey;
         TVShows response = restTemplate.getForObject(getAiringAPI, TVShows.class);
         
         return response.getResults();
@@ -44,16 +44,16 @@ public class TVShowsController {
     @GetMapping("/on-the-air")
     public List<TVShow> getOnTheAir() {
         String apiKey = apiKeyProvider.getApiKey();
-        String getOnTheAirAPI = "https://api.themoviedb.org/3/tv/on_the_air?language=en-US&page=1" + apiKey;
+        String getOnTheAirAPI = "https://api.themoviedb.org/3/tv/on_the_air?language=en-US&page=1&api_key=" + apiKey;
         TVShows response = restTemplate.getForObject(getOnTheAirAPI, TVShows.class);
         
         return response.getResults();
-    } */
+    } 
 
     @GetMapping("/top-rated")
     public List<TVShow> getTopRated() {
         String apiKey = apiKeyProvider.getApiKey();
-        String getTopRatedAPI = "https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1" + apiKey;
+        String getTopRatedAPI = "https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1&api_key=" + apiKey;
         TVShows response = restTemplate.getForObject(getTopRatedAPI, TVShows.class);
         
         return response.getResults();

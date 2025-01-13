@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController // GET method
-@RequestMapping("/api/tv") // concerned with grabbing movie ID's for movie details
+@RequestMapping("/api/tv-shows") // concerned with grabbing movie ID's for movie details
 public class TVShowsDetailsController {
 
     @Autowired
