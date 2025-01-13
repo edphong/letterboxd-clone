@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
+import SearchBar from './SearchBar';  // Import SearchBar component
 import "../styles/NavBar.css";
+
+// Import the logo image
+import logo from '../assets/logo.webp';
 
 const NavBar = () => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -14,18 +18,15 @@ const NavBar = () => {
 
     return (
         <nav className="navbar">
-            <div className="navbar-logo" onClick={handleLogoClick}>
-                myBacklog
+            <div className="navbar-logo-container" onClick={handleLogoClick}>
+                {/* Text and logo together inside the clickable container */}
+                <div className="navbar-logo">
+                    myBacklog
+                </div>
+                <img src={logo} alt="Logo" className="navbar-logo-img" />
             </div>
-            <div className="navbar-search">
-                <input
-                    type="text"
-                    placeholder="Search..."
-                    value={searchQuery}
-                    onChange={handleSearchChange}
-                    className="search-input"
-                />
-                <i className="fas fa-search search-icon"></i> {/* Magnifying glass icon */}
+            <div className="navbar-search-container">
+                <SearchBar searchQuery={searchQuery} handleSearchChange={handleSearchChange} /> {/* Use the SearchBar component */}
             </div>
         </nav>
     );

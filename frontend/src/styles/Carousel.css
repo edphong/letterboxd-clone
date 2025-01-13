@@ -1,0 +1,125 @@
+/* Backdrop container style */
+.backdrop-container {
+    position: relative;
+    display: flex;
+    justify-content: flex-start; /* Align content to the bottom-left */
+    align-items: flex-end;
+    height: 80vh; /* Adjust to desired height */
+    width: 100%;
+    overflow: hidden; /* Prevent image overflow */
+}
+
+/* Backdrop image with fade effect */
+.backdrop-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Maintain aspect ratio while filling the container */
+    z-index: 1;
+    mask-image: 
+        linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 70%);
+    transition: opacity .3s;
+}
+
+/* Content overlay on top of the backdrop */
+.hero-content {
+    position: relative; /* Keep the relative positioning */
+    z-index: 3;
+    color: white;
+    padding: 20px;
+    max-width: 50%;
+    margin-left: 100px; /* Move content 20px to the right */
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    font-weight: bold; /* Making the title bold */
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    color: grey;
+}
+
+.hero-content h2 {
+    margin-right: 8px;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    color: grey;
+    font-weight: 500; /* Slightly lighter than the title */
+    display: inline-block; /* Align it with the title properly */
+}
+
+/* Carousel dot navigation */
+.dots-container {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 3;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dot.active {
+    background-color: white;
+}
+
+.carousel-container {
+    position: relative;
+}
+
+/* Mobile Specific Adjustments */
+@media (max-width: 600px) {
+    /* Backdrop container height adjustment for mobile */
+    .backdrop-container {
+        height: 50vh; /* Adjust height for better fitting on smaller screens */
+    }
+
+    /* Hero content adjustments */
+    .hero-content {
+        max-width: 100%; /* Allow content to take full width */
+        margin-left: 10px; /* Reduce margin */
+        padding: 10px; /* Reduce padding */
+    }
+
+    /* Hero title adjustments */
+    .hero-content h1 {
+        font-size: 1.8rem; /* Adjust font size for smaller screens */
+    }
+
+    .hero-content p {
+        font-size: 0.9rem; /* Smaller text for better readability */
+    }
+
+    .hero-content h2 {
+        font-size: 1rem; /* Adjust subheading font size */
+    }
+
+    /* Hero buttons */
+    .hero-buttons .hero-button {
+        font-size: 0.9rem; /* Adjust font size of buttons */
+        padding: 8px 16px; /* Adjust padding for better button size */
+    }
+
+    /* Dot navigation */
+    .dots-container {
+        bottom: 10px; /* Move dots closer to the bottom */
+        gap: 5px; /* Reduce the gap between dots */
+    }
+}

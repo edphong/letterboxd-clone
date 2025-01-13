@@ -2,55 +2,60 @@
 .navbar {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between;  /* Ensures space between the logo and the search bar */
     padding: 10px 20px;
-    background: transparent; /* Make the navbar background transparent */
-    position: absolute; /* Optional: This can ensure the navbar stays on top and doesn't push content */
-    z-index: 10; /* Optional: Ensures the navbar stays above other elements */
-    width: 94%;
+    background-color: transparent;
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-/* Styles for the logo */
-.navbar-logo {
-    font-size: 24px;
-    font-weight: 600;
+/* Container for the logo and text */
+.navbar-logo-container {
+    display: flex;
+    align-items: center; /* Align the text and logo horizontally */
     cursor: pointer;
-    margin-left: 100px; /* Move content 20px to the right */
+    margin-left: 20px; /* Adjust to push content more towards the left */
 }
 
-.navbar-logo:hover { 
-    color: grey;
+/* Logo text styles with a bold serif font (similar to Letterboxd) */
+.navbar-logo {
+    font-family: 'Merriweather', serif; /* Using a similar bold serif font */
+    font-size: 2.2em; /* Adjust text size for prominence */
+    font-weight: 700; /* Bold weight for the logo */
+    margin-right: 10px; /* Space between the text and logo */
+    color: #FFFFFF; /* White color for the text */
+    text-transform: uppercase; /* Capitalize the logo text */
+    letter-spacing: 1.5px; /* Slight letter spacing for a sophisticated look */
+    margin-left: 100px;
+}
+
+/* Logo image styles */
+.navbar-logo-img {
+    width: 40px; /* Adjust the width of the logo */
+    height: auto; /* Keep aspect ratio intact */
+}
+
+/* Styles for the search bar container */
+.navbar-search-container {
+    display: flex;
+    align-items: center;
+    margin-right: 100px; /* Adjust the right margin to control the spacing */
 }
 
 /* Styles for the search input */
-.navbar-search {
-    display: flex;
-    align-items: center; /* Align items vertically in the center */
-    position: relative; /* To position the icon inside the search bar */
-}
-
 .search-input {
     padding: 3px 10px;
     font-size: 16px;
     border: none;
     border-radius: 5px;
     width: 200px;
-    transition: width 0.3s ease-in-out; /* Smooth transition for focus effect */
+    transition: width 0.3s ease-in-out;
 }
 
-/* On focus, expand the search input */
+/* When the search bar is focused, it expands */
 .search-input:focus {
     outline: none;
     width: 300px;
 }
-
-/* Styles for the search icon */
-.search-icon {
-    position: absolute;
-    right: 10px; /* Position the icon to the right inside the search bar */
-    color: white; /* Icon color */
-    font-size: 18px; /* Icon size */
-    pointer-events: none; /* Make sure the icon doesn't interfere with input interactions */
-}
-
-
