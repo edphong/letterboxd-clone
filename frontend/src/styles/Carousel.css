@@ -1,5 +1,5 @@
 /* Backdrop container style */
-.backdrop-container {
+.carousel-backdrop-container {
     position: relative;
     display: flex;
     justify-content: flex-start; /* Align content to the bottom-left */
@@ -10,7 +10,7 @@
 }
 
 /* Backdrop image with fade effect */
-.backdrop-image {
+.carousel-backdrop-image {
     position: absolute;
     top: 0;
     left: 0;
@@ -24,29 +24,29 @@
 }
 
 /* Content overlay on top of the backdrop */
-.hero-content {
+.carousel-hero-content {
     position: relative; /* Keep the relative positioning */
     z-index: 3;
     color: white;
     padding: 20px;
     max-width: 50%;
-    margin-left: 100px; /* Move content 20px to the right */
+    margin-left: 350px; /* Move content 20px to the right */
 }
 
-.hero-content h1 {
+.carousel-hero-content h1 {
     font-size: 3rem;
     margin-bottom: 10px;
     font-weight: bold; /* Making the title bold */
 }
 
-.hero-content p {
+.carousel-hero-content p {
     font-size: 1.2rem;
     margin-bottom: 20px;
     line-height: 1.5;
     color: grey;
 }
 
-.hero-content h2 {
+.carousel-hero-content h2 {
     margin-right: 8px;
     font-size: 1.2rem;
     margin-bottom: 20px;
@@ -57,7 +57,7 @@
 }
 
 /* Carousel dot navigation */
-.dots-container {
+.carousel-dots-container {
     position: absolute;
     bottom: 20px;
     left: 50%;
@@ -67,7 +67,7 @@
     z-index: 3;
 }
 
-.dot {
+.carousel-dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
@@ -76,7 +76,7 @@
     transition: background-color 0.3s;
 }
 
-.dot.active {
+.carousel-dot.active {
     background-color: white;
 }
 
@@ -87,38 +87,38 @@
 /* Mobile Specific Adjustments */
 @media (max-width: 600px) {
     /* Backdrop container height adjustment for mobile */
-    .backdrop-container {
+    .carousel-backdrop-container {
         height: 50vh; /* Adjust height for better fitting on smaller screens */
     }
 
     /* Hero content adjustments */
-    .hero-content {
+    .carousel-hero-content {
         max-width: 100%; /* Allow content to take full width */
         margin-left: 10px; /* Reduce margin */
         padding: 10px; /* Reduce padding */
     }
 
     /* Hero title adjustments */
-    .hero-content h1 {
+    .carousel-hero-content h1 {
         font-size: 1.8rem; /* Adjust font size for smaller screens */
     }
 
-    .hero-content p {
+    .carousel-hero-content p {
         font-size: 0.9rem; /* Smaller text for better readability */
     }
 
-    .hero-content h2 {
+    .carousel-hero-content h2 {
         font-size: 1rem; /* Adjust subheading font size */
     }
 
     /* Hero buttons */
-    .hero-buttons .hero-button {
+    .carousel-hero-buttons .hero-button {
         font-size: 0.9rem; /* Adjust font size of buttons */
         padding: 8px 16px; /* Adjust padding for better button size */
     }
 
     /* Dot navigation */
-    .dots-container {
+    .carousel-dots-container {
         bottom: 10px; /* Move dots closer to the bottom */
         gap: 5px; /* Reduce the gap between dots */
     }

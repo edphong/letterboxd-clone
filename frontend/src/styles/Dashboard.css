@@ -5,7 +5,7 @@
 .dashboard-container {
     font-family: 'Montserrat', sans-serif; /* Apply only to the dashboard */
     color: #FFFFFF; /* Set text color to white */
-    padding: 20px;
+    padding: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,19 +18,20 @@
 }
 
 /* Poster grid style for displaying posters */
-.poster-grid {
+.dashboard-poster-grid {
     display: grid;
-    grid-template-columns: repeat(10, 1fr); /* 10 equal columns */
-    gap: 20px; /* Space between posters */
+    grid-template-columns: repeat(6, 1fr); /* 6 equal columns */
+    grid-template-rows: repeat(3, 1fr); /* 3 equal rows */
+    gap: 300px; /* Space between posters */
     justify-content: center; /* Center the grid items */
     padding: 0 10px; /* Optional padding to prevent edges from touching */
     box-sizing: border-box; /* Include padding in width calculation */
 }
 
 /* Common style for posters */
-.poster {
-    width: 92%;
-    max-width: 165px;
+.dashboard-poster {
+    width: 110%;
+    max-width: 180px;
     height: auto;
     border-radius: 3%;
     position: relative;
@@ -40,7 +41,7 @@
 }
 
 /* Combined hover effect for poster */
-.poster:hover {
+.dashboard-poster:hover {
     transform: scale(1.05); /* Slightly enlarges the poster for a smooth hover effect */
     box-shadow: 0 0 1px 2px #00ff00; /* Green glow outline */
     filter: brightness(0.5); /* Darkens the poster slightly */
@@ -54,6 +55,8 @@
     margin: 0 0 10px 0;
     padding-left: 190px;
     color: #FFFFFF; /* Set header text color to white */
+    gap: 50px;
+    
 }
 
 /* Mobile Screens (max-width: 600px) */
@@ -62,9 +65,9 @@
         padding: 10px; /* Reduce padding for mobile */
     }
 
-    .poster-grid {
-        grid-template-columns: 1fr; /* Display one column for mobile screens */
-        gap: 10px; /* Further reduce gap between posters */
+    .dashboard-poster-grid {
+        grid-template-columns: repeat(6, 1fr); /* Display one column for mobile screens */
+        gap: 50px; /* Further reduce gap between posters */
         padding: 0 5px; /* Less padding for mobile */
     }
 
@@ -76,8 +79,8 @@
 
 /* Tablet Screens (max-width: 1024px) */
 @media (max-width: 1024px) {
-    .poster-grid {
-        grid-template-columns: repeat(3, 1fr); /* 3 columns for tablets */
+    .dashboard-poster-grid {
+        grid-template-columns: repeat(6, 1fr); /* 3 columns for tablets */
         gap: 15px; /* Default gap between posters */
     }
 
@@ -89,13 +92,13 @@
 
 /* Larger Screens (min-width: 1025px) */
 @media (min-width: 1025px) {
-    .poster-grid {
-        grid-template-columns: repeat(10, 1fr); /* 10 columns for large screens */
-        gap: 2px; /* Default gap between posters */
+    .dashboard-poster-grid {
+        grid-template-columns: repeat(6, 1fr); /* 10 columns for large screens */
+        gap: 20px; /* Default gap between posters */
     }
 
     .dashboard-container h2 {
         font-size: 2em; /* Larger header font size for large screens */
-        padding-left: 190px; /* Larger padding for larger screens */
+        padding-left: 630px; /* Larger padding for larger screens */
     }
 }

@@ -8,7 +8,7 @@ import NavBar from './components/NavBar'; // Adjust path as needed
 const App = () => {
     return (
         <Router>
-            <NavBar />
+            <NavBar/>
             <Routes>
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/movie/:movieId" element={<MovieDetails />} />

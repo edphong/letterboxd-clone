@@ -4,8 +4,8 @@
 
 /* Your other global styles */
 :root {
-  --primary-color: #1e3a8a;
-  --secondary-color: #0f172a;
+  --primary-color: #121212;
+  --secondary-color: #121212;
   --text-color: #FFFFFF;
   --accent-color: #F5F5F5;
 }
@@ -16,6 +16,17 @@ body {
   color: var(--text-color);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Apply Graphik font family */
+  font-family: 'Graphik', sans-serif;
 }
 
-/* No font-family here */
+/* Headings and titles use Tiempos Headings font family */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Tiempos Headings', serif;
+}
+
+/* Specific styling for other text */
+p, ul, li, span {
+  font-family: 'Graphik', sans-serif;
+}

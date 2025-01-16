@@ -1,0 +1,221 @@
+/* Ensure the body and html take up full height */
+body, html {
+    height: 100%;
+    margin: 0;
+    background-color: #121212; /* Dark background like Letterboxd */
+    color: #FFFFFF; /* White text color for readability */
+    font-family: 'Graphik', sans-serif; /* Default body font */
+}
+
+/* Adjusting the details container to match the new theme */
+.details-movie-container {
+    display: flex;
+    flex-direction: row; /* Arrange items horizontally */
+    gap: 20px; /* Space between poster and details */
+    align-items: flex-start; /* Align items at the top */
+    padding: 20px;
+    background-color: rgba(18, 18, 18, 0.8); /* Semi-transparent dark background */
+    border-radius: 10px; /* Optional: for rounded corners */
+    margin-top: 90px;
+}
+
+/* Details poster container */
+.details-poster-container {
+    flex: 0 0 auto; /* Keep the poster size fixed */
+    max-width: 300px; /* Adjust as needed */
+    z-index: 1;
+    margin-top: 300px;
+    margin-left: 350px;
+}
+
+/* Details movie poster */
+.details-movie-poster {
+    max-width: 300px;
+    border-radius: 3%;
+}
+
+/* Info container, now with a dark background */
+.details-info-container {
+    flex: 1; /* Allow the details section to grow */
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between details */
+    z-index: 1;
+    max-width: 750px;
+    margin-top: 300px;
+    margin-left: 30px;
+    background-color: rgba(18, 18, 18, 0.8); /* Semi-transparent dark background */
+    border-radius: 10px; /* Optional: rounded corners */
+    padding: 20px;
+}
+
+/* Title (h1) in Tiempos Headings */
+.details-title-adjust h1 {
+    font-family: 'Tiempos Headings', serif; /* Heading font */
+    font-weight: 500; /* Medium weight */
+    margin-left: -30px; /* Moves the title 20px to the left */
+}
+
+/* Styling for backdrop with mask effect */
+.details-header-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Maintain aspect ratio while filling the container */
+    z-index: 0;        /* Lower z-index to sit beneath the details container */
+    mask-image: 
+        linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 70%);
+    -webkit-mask-image: 
+        linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 70%);
+    transition: opacity 0.3s;
+}
+
+/* Heading and text color adjustments */
+h2, p, ul li {
+    color: #FFFFFF; /* Ensure text remains white */
+}
+
+/* Apply Tiempos for sub-headings like movie info */
+.details-info-container h3 {
+    font-family: 'Tiempos Headings', serif; /* Heading font for sub-headings */
+    font-weight: 500; /* Medium weight */
+}
+
+/* Text in Graphik for list items */
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+ul li {
+    background-color: rgba(18, 18, 18, 0.7); /* Slightly transparent dark background */
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-family: 'Graphik', sans-serif; /* List font */
+}
+
+/* Review list styling */
+.details-review-list {
+    margin-top: 20px;
+}
+
+.details-reviews-title {
+    font-family: 'Tiempos Headings', sans-serif; /* Apply Graphik font to the heading */
+    font-size: 1.5em;      /* Adjust size to match other headings */
+    font-weight: bold;    
+}
+
+.details-review-list > div {
+    background-color: rgba(18, 18, 18, 0.7); /* Dark background for reviews */
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    font-family: 'Graphik', sans-serif; /* Review font */
+}
+
+/* Review author name styling */
+.details-review-list > div strong {
+    font-family: 'Tiempos Headings', serif; /* Bold author name in Heading font */
+}
+
+.details-title {
+    font-size: 40px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.details-year {
+    font-size: 35px;
+    margin-left: 10px;  /* Moves the year to the right */
+    color: #777;  /* Adjusts color to make it subtle */
+    font-weight: normal;
+}
+
+.details-tagline {
+    font-style: italic;
+    color: #F5F5F5;
+}
+
+.details-overview {
+    margin-top: 10px;
+    color: #DCDCDC;
+}
+
+.details-genres {
+    margin-top: 5px;
+    color: #F5F5F5;
+}
+
+.details-date {
+    margin-top: 10px;
+    color: #FFFFFF;
+}
+
+.details-created-by {
+    margin-top: 20px;
+    color: #FFFFFF;
+}
+
+.details-creators-list {
+    margin-top: 10px;
+    list-style-type: none;
+}
+
+.creator-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.creator-profile {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.creator-profile-placeholder {
+    width: 50px;
+    height: 50px;
+    background-color: #CCC;
+    border-radius: 50%;
+}
+
+.details-languages {
+    margin-top: 20px;
+    color: #FFFFFF;
+}
+
+.languages-list {
+    margin-top: 10px;
+    list-style-type: none;
+}
+
+.language-item {
+    margin-bottom: 5px;
+    color: #DCDCDC;
+}
+
+.no-languages {
+    color: #DCDCDC;
+}
+
+.review-list {
+    margin-top: 20px;
+}
+
+.review-item strong {
+    color: #F5F5F5;
+}
+
+.divider {
+    border: none;
+    border-top: 1px solid #777; /* Thin line with subtle color */
+    margin: 10px 0; /* Adds space above and below the line */
+    width: 163%; 
+}
+
+
