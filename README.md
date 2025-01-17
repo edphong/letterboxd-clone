@@ -1,4 +1,5 @@
 # myBacklog - Letterboxd Clone 
+![Screenshot_from_2025-01-17_15-12-00](https://github.com/user-attachments/assets/ac91b1e1-24c3-45d1-a5c7-f08ccc8f3ad3)
 
 ## About
 A Letterboxd-inspired web application built with RESTful APIs, leveraging TMDB for media data. Users can explore movie details, genres, reviews, and more through a sleek, responsive interface.
