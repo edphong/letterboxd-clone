@@ -12,10 +12,10 @@ A Letterboxd-inspired web application built with RESTful APIs, leveraging TMDB f
 - Implemented an efficient search algorithm to efficiently search and navigate API data.
 
 ## Tech Stacks
-- React & CSS: Building the frontend and ensuring responsive, user-friendly interfaces.
-- Java, Spring Boot & Apache Maven: For backend development and efficient dependency management.
-- Docker: To containerize the application for easy deployment and scalability.
-- TMDB APIs: Leveraging The Movie Database's APIs to fetch movie and TV show data.
+- **React & CSS**: Building the frontend and ensuring responsive, user-friendly interfaces.
+- **Java, Spring Boot & Apache Maven**: For backend development and efficient dependency management.
+- **Docker**: To containerize the application for easy deployment and scalability.
+- **TMDB APIs**: Leveraging The Movie Database's APIs to fetch movie and TV show data.
 
 ## Getting Started
 1. 
