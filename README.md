@@ -1,3 +1,4 @@
-# myBacklog
+# myBacklog - Letterboxd Clone 
 
-Full-stack project harnessing external API's to replicate a movie database website akin to Imdb for educational purposes.
+About
+A Letterboxd-inspired web application built with RESTful APIs, leveraging TMDB for media data. Users can explore movie details, genres, reviews, and more through a sleek, responsive interface.
