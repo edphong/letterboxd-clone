@@ -32,7 +32,7 @@ Ensure the latest version of Docker is installed.
 2. Create an account or log in if you already have one.
 3. Go to your account settings, navigate to the API section, and request an API key.
 4. Copy paste API key into **.env** file.
-```
+
 ## Running the Application with Docker via Command Line
 1. Clone Repository
 2. Terminal 1: Build and Run Backend
