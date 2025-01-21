@@ -36,7 +36,7 @@ Ensure the latest version of Docker is installed.
 ## Running the Application with Docker via Command Line
 1. Clone Repository
 2. Terminal 1: Build and Run Backend
-'''
+```
       cd backend
       docker build -t my-backend -f dockerfile-backend .
       docker run -d --name backend-container --env-file .env -p 8080:8080 my-backend
