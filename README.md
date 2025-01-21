@@ -40,13 +40,17 @@ Ensure the latest version of Docker is installed.
       cd backend
       docker build -t my-backend -f dockerfile-backend .
       docker run -d --name backend-container --env-file .env -p 8080:8080 my-backend
-4. Terminal 2: Build and Run Frontend 
-  ```cd frontend
+```
+4. Terminal 2: Build and Run Frontend
+```
+cd frontend
      docker build -t my-frontend -f dockerfile-frontend .
      docker run -d --name frontend-container -p 3000:80 my-frontend
+```
 4. Navigate to [Link Text](http://localhost:3000)
 5. To terminate:
-   ```docker stop backend-container frontend-container
+```
+      docker stop backend-container frontend-container
       docker rm backend-container frontend-container
-     
+```
 
