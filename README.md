@@ -43,7 +43,7 @@ Ensure the latest version of Docker is installed.
 ```
 4. Terminal 2: Build and Run Frontend
 ```
-cd frontend
+     cd frontend
      docker build -t my-frontend -f dockerfile-frontend .
      docker run -d --name frontend-container -p 3000:80 my-frontend
 ```
