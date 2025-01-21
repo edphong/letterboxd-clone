@@ -47,17 +47,28 @@ const Dashboard = () => {
                     setUpcomingMovies(upcomingMoviesRes.data.slice(0, 18));
                     setTopRatedMovies(topRatedMoviesRes.data.slice(0, 18));
                     setTopRatedTVShows(topRatedTVShowsRes.data.slice(0, 18));
-                    setLoading(false);
+                    setLoading(false); // Data is loaded
                 }
             )
             .catch((err) => {
                 setError("Error fetching data: " + err.message);
-                setLoading(false);
+                setLoading(false); // Even if error occurs, stop loading state
             });
-
     }, []); // Empty dependency array
 
     if (loading) {
+        return (
+            <div>
+                {/* Display only the navbar or a loading spinner */}
+                <nav>
+                    {/* Your Navbar Code */}
+                </nav>
+                <div className="loading-state">
+                    {/* Optional: Add a loading spinner or message */}
+                    <p>Loading...</p>
+                </div>
+            </div>
+        );
     }
 
     const renderMediaRow = (title, mediaItems, pathPrefix) => (
@@ -87,6 +98,12 @@ const Dashboard = () => {
 
     return (
         <div>
+            {/* Navbar should always be visible */}
+            <nav>
+                {/* Your Navbar Code */}
+            </nav>
+
+            {/* After loading, display all sections */}
             {/* Upcoming Movies Carousel */}
             <Carousel movies={upcomingMovies} />
             {/* Other Sections */}

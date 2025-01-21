@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import Details from '../components/Details'; // Import Details component
+import Details from '../components/Details'; // Import the Details component
 import '../styles/Details.css';
 
 const TVShowDetails = () => {
@@ -39,38 +39,47 @@ const TVShowDetails = () => {
 
     const backdropUrl = `https://image.tmdb.org/t/p/original${tvShow.backdrop_path}`;
 
-    return (
+    // Extract the year from the first air date
+    const firstAirYear = new Date(tvShow.first_air_date).getFullYear();
+
+    return (    
         <div>
-            {/* Backdrop container is separate */}
+            {/* Backdrop container */}
             <div
-                className="alternate-container"
+                className="details-header-container"
                 style={{
                     backgroundImage: `url(${backdropUrl})`,
                     backgroundSize: 'cover',
-                    backgroundPosition: 'center center',
-                    height: '60vh', // Adjust the height as needed
+                    backgroundPosition: 'top center',
+                    height: '40vh', // Adjust the height as needed
                 }}
             ></div>
 
-            {/* Details container */}
-            <div className="container">
-                <div className="details-container">
-                    <Details
-                        title={tvShow.name}
-                        posterPath={tvShow.poster_path}
-                        overview={tvShow.overview}
-                        genres={tvShow.genres}
-                        tagline={tvShow.tagline}
-                        additionalInfo={[
-                            { label: 'First Air Date', value: tvShow.first_air_date },
-                            { label: 'Number of Seasons', value: tvShow.number_of_seasons },
-                            { label: 'Number of Episodes', value: tvShow.number_of_episodes },
-                        ]}
-                        creators={tvShow.created_by}
-                        productionCompanies={tvShow.production_companies}
-                        spokenLanguages={tvShow.spoken_languages}
-                        reviews={reviews}
+            {/* Movie/TV Show details container */}
+            <div className="details-movie-container">
+                <div className="details-poster-container">
+                    <img
+                        src={`https://image.tmdb.org/t/p/original${tvShow.poster_path}`}
+                        alt={`${tvShow.name} Poster`}
+                        className="details-movie-poster"
                     />
+                </div>
+                <div className="details-info-container">
+                <Details
+                    title={`${tvShow.name} (${firstAirYear})`} // Display title with year
+                    tagline={tvShow.tagline}
+                    overview={tvShow.overview}
+                    genres={tvShow.genres}
+                    additionalInfo={[
+                        { label: 'Number of Seasons', value: tvShow.number_of_seasons },
+                        { label: 'Number of Episodes', value: tvShow.number_of_episodes },
+                        { label: 'First Air Date', value: tvShow.first_air_date }
+                    ]}
+                    creators={tvShow.created_by}
+                    spokenLanguages={tvShow.spoken_languages}
+                    reviews={reviews}
+                    isMovie={false} // TV Show
+                />
                 </div>
             </div>
         </div>

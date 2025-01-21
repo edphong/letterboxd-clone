@@ -1,4 +1,3 @@
-// src/components/Details.js
 import React from 'react';
 import "../styles/Details.css";
 
@@ -11,25 +10,29 @@ const Details = ({
     creators,
     spokenLanguages,
     reviews,
+    isMovie // New prop to distinguish between movie and TV show
 }) => {
-    const releaseDate = additionalInfo.find(info => info.label === 'Release Date');
-    const year = releaseDate ? new Date(releaseDate.value).getFullYear() : null;
+    // Extract Release Date or First Air Date depending on the content type (movie or TV show)
+    const releaseDateLabel = isMovie ? 'Release Date' : 'First Air Date';
+    const releaseDateInfo = additionalInfo.find(info => info.label === releaseDateLabel);
+    const releaseDateValue = releaseDateInfo ? new Date(releaseDateInfo.value) : null;
+    const releaseYear = releaseDateValue ? releaseDateValue.getFullYear() : null;
 
     return (
         <div className="details-content">
             <h2 className="details-title">
                 {title} 
-                {year && <span className="details-year">{year}</span>}
-                <hr className="divider" />
+                {releaseYear && <span className="details-year">{releaseYear}</span>}
             </h2>
-            <p className="details-tagline"><strong> </strong>{tagline}</p>
+            <hr className="divider" />
+            <p className="details-tagline">{tagline}</p>
             <p className="details-overview">{overview}</p>
 
             {/* Display Genres */}
             <p className="details-genres"><strong>Genres: </strong>{genres.map(genre => genre.name).join(", ")}</p>
 
-            {/* Display Additional Info excluding release date */}
-            {additionalInfo.filter(info => info.label !== 'Release Date').map((info, index) => (
+            {/* Display Additional Info excluding date info */}
+            {additionalInfo.filter(info => info.label !== releaseDateLabel).map((info, index) => (
                 <p key={index} className="details-additional-info">
                     <strong>{info.label}:</strong> {info.value}
                 </p>
@@ -37,39 +40,45 @@ const Details = ({
 
             {/* Display Created By */}
             {creators && creators.length > 0 && (
-                <>
-                    <p className="details-created-by"><strong>Created By:</strong></p>
-                    <ul className="details-creators-list">
-                        {creators.map(creator => (
-                            <li key={creator.id} className="creator-item">
-                                {creator.name}
-                            </li>
-                        ))}
-                    </ul>
-                </>
+                <p className="details-created-by">
+                    <strong>Created By: </strong>
+                    {creators.map((creator, index) => (
+                        <span key={creator.id}>
+                            {creator.name}{index < creators.length - 1 && ', '}
+                        </span>
+                    ))}
+                </p>
             )}
 
             {/* Display Languages */}
-            <p className="details-languages"><strong>Languages: </strong></p>
-            {spokenLanguages.length > 0 ? (
-                <ul className="languages-list">
-                    {spokenLanguages.map(language => (
-                        <li key={language.iso_639_1} className="language-item">{language.name}</li>
-                    ))}
-                </ul>
-            ) : (
-                <p className="no-languages">No spoken languages available.</p>
-            )}
-
+            <div className="details-languages">
+                <strong>Languages: </strong>
+                {spokenLanguages.length > 0 ? (
+                    <span className="languages-list">
+                        {spokenLanguages.map((language, index) => (
+                            <span key={language.iso_639_1}>
+                                {language.name}{index < spokenLanguages.length - 1 && ', '}
+                            </span>
+                        ))}
+                    </span>
+                ) : (
+                    <span className="no-languages">No spoken languages available.</span>
+                )}
+            </div>
+            
             {/* Display Reviews */}
             {reviews && reviews.length > 0 && (
-                <div className="details-review-list">
-                    <h3 className="details-reviews-title">Recent Reviews</h3>
-                    {reviews.map(review => (
+                <div className="details-reviews-list">
+                    <p className="details-reviews-title">Recent Reviews</p>
+                    <hr className="divider" />
+                    {reviews.map((review, index) => (
                         <div key={review.id} className="review-item">
-                            <p><strong>{review.author}</strong> - Rating: {review.rating} / 10</p>
+                            <p> Review by <strong>{review.author}</strong> - Rating: {review.author_details?.rating ? review.author_details.rating : '-'} / 10</p>
                             <p>{review.content}</p>
-                            <p><small>Reviewed on: {new Date(review.created_at).toLocaleDateString()}</small></p>
+                            <p><small>{new Date(review.created_at).toLocaleDateString()}</small></p>
+
+                            {/* Divider after each review except the last one */}
+                            {index < reviews.length - 1 && <hr className="comment-divider" />}
                         </div>
                     ))}
                 </div>

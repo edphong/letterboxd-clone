@@ -45,11 +45,14 @@ const MovieDetails = () => {
     }
 
     if (reviewsError) { 
-        return <p style={{ color: 'red'}} >{movieError} </p>
+        return <p style={{ color: 'red'}}>{reviewsError}</p>;
     }
 
     const backdropUrl = `https://image.tmdb.org/t/p/original${movie.backdrop_path}`;
 
+    // Determine if it's a movie or TV show based on the presence of the 'first_air_date' field
+    const isMovie = movie.release_date !== undefined;
+    
     return (
         <div>
             {/* Backdrop container */}
@@ -73,19 +76,18 @@ const MovieDetails = () => {
                 </div>
                 <div className="details-info-container">
                     <Details
-                        className="details-title-adjust"
                         title={movie.title}
                         tagline={movie.tagline}
                         overview={movie.overview}
                         genres={movie.genres}
                         additionalInfo={[
                             { label: 'Release Date', value: movie.release_date },
-                            { label: 'Runtime', value: `${movie.runtime} minutes` },
+                            { label: 'Runtime', value: `${movie.runtime} minutes` }
                         ]}
                         creators={movie.production_companies}
-                        productionCompanies={movie.production_companies}
                         spokenLanguages={movie.spoken_languages}
                         reviews={reviews}
+                        isMovie={true} // Movie
                     />
                 </div>
             </div>
