@@ -6,7 +6,6 @@
 ## Film & Television Show Information 
 ![image](https://github.com/user-attachments/assets/fc7a3b55-65c3-4e5c-a706-9763cd69ca55)
 
-
 ## About
 A Letterboxd-inspired web application built with RESTful APIs, leveraging TMDB for media data. Users can explore movie details, genres, reviews, and more through a sleek, responsive interface.
 
@@ -27,7 +26,7 @@ A Letterboxd-inspired web application built with RESTful APIs, leveraging TMDB f
 ## Prerequisites
 Ensure you have the latest version of Docker installed. You can verify your installation by running: 
 ```
-      docker --version
+docker --version
 ```
 
 ## Obtain API Key and Set up Environment Variables
@@ -40,20 +39,20 @@ Ensure you have the latest version of Docker installed. You can verify your inst
 1. Clone Repository
 2. Terminal 1: Build and Run Backend
 ```
-      cd backend
-      docker build -t my-backend -f dockerfile-backend .
-      docker run -d --name backend-container --env-file .env -p 8080:8080 my-backend
+cd backend
+docker build -t my-backend -f dockerfile-backend .
+docker run -d --name backend-container --env-file .env -p 8080:8080 my-backend
 ```
 4. Terminal 2: Build and Run Frontend
 ```
-     cd frontend
-     docker build -t my-frontend -f dockerfile-frontend .
-     docker run -d --name frontend-container -p 3000:80 my-frontend
+cd frontend
+docker build -t my-frontend -f dockerfile-frontend .
+docker run -d --name frontend-container -p 3000:80 my-frontend
 ```
 4. Navigate to (http://localhost:3000)
 5. To terminate:
 ```
-      docker stop backend-container frontend-container
-      docker rm backend-container frontend-container
+docker stop backend-container frontend-container
+docker rm backend-container frontend-container
 ```
 
