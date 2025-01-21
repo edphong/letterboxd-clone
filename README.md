@@ -2,10 +2,10 @@
 ## About
 A Letterboxd-inspired web application built with RESTful APIs, leveraging TMDB for media data. Users can explore movie details, genres, reviews, and more through a sleek, responsive interface.
 
-## Landing Page
+### Landing Page
 ![Screenshot_from_2025-01-17_15-12-00](https://github.com/user-attachments/assets/ac91b1e1-24c3-45d1-a5c7-f08ccc8f3ad3)
 
-## Film & Television Show Information 
+### Film & Television Show Information 
 ![image](https://github.com/user-attachments/assets/fc7a3b55-65c3-4e5c-a706-9763cd69ca55)
 
 ## Features
