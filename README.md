@@ -47,7 +47,7 @@ Ensure the latest version of Docker is installed.
      docker build -t my-frontend -f dockerfile-frontend .
      docker run -d --name frontend-container -p 3000:80 my-frontend
 ```
-4. Navigate to [Link Text](http://localhost:3000)
+4. Navigate to (http://localhost:3000)
 5. To terminate:
 ```
       docker stop backend-container frontend-container
