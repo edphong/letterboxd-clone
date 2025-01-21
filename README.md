@@ -25,7 +25,10 @@ A Letterboxd-inspired web application built with RESTful APIs, leveraging TMDB f
 
 # Getting Started
 ## Prerequisites
-Ensure the latest version of Docker is installed.
+Ensure you have the latest version of Docker installed. You can verify your installation by running: 
+```
+      docker --version
+```
 
 ## Obtain API Key and Set up Environment Variables
 1. Go to The Movie Database (TMDB) website.
