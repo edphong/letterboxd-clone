@@ -32,20 +32,20 @@ Ensure the latest version of Docker is installed.
 2. Create an account or log in if you already have one.
 3. Go to your account settings, navigate to the API section, and request an API key.
 4. Copy paste API key into **.env** file.
-
+```
 ## Running the Application with Docker via Command Line
 1. Clone Repository
 2. Terminal 1: Build and Run Backend
-   cd backend
-   docker build -t my-backend -f dockerfile-backend .
-   docker run -d --name backend-container --env-file .env -p 8080:8080 my-backend
+   ```cd backend```
+   ```docker build -t my-backend -f dockerfile-backend .```
+   ```docker run -d --name backend-container --env-file .env -p 8080:8080 my-backend```
 3. Terminal 2: Build and Run Frontend 
-  cd frontend
-  docker build -t my-frontend -f dockerfile-frontend .
-  docker run -d --name frontend-container -p 3000:80 my-frontend
+  ```cd frontend```
+  ```docker build -t my-frontend -f dockerfile-frontend .```
+  ```docker run -d --name frontend-container -p 3000:80 my-frontend```
 4. Navigate to [Link Text](http://localhost:3000)
 5. To terminate:
-   docker stop backend-container frontend-container
-   docker rm backend-container frontend-container
+   ```docker stop backend-container frontend-container```
+   ```docker rm backend-container frontend-container```
      
 
