@@ -23,7 +23,7 @@ A Letterboxd-inspired web application built with RESTful APIs, leveraging TMDB f
 
 ## Getting Started
 ### Prerequisites
-Ensure you have the latest version of Docker installed. You can verify your installation by running: 
+Ensure you have the latest version of Docker installed (27.5.0 as of January 2025). You can verify your installation by running: 
 ```
 docker --version
 ```
