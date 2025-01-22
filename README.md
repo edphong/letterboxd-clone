@@ -40,13 +40,13 @@ docker --version
 ```
 cd backend
 docker build -t my-backend -f dockerfile-backend .
-docker run -d --name backend-container --env-file .env -p 8080:8080 my-backend
+docker run --name backend-container -p 8080:8080 --env-file .env backend
 ```
 4. Terminal 2: Build and Run Frontend
 ```
 cd frontend
 docker build -t my-frontend -f dockerfile-frontend .
-docker run -d --name frontend-container -p 3000:80 my-frontend
+docker run --name frontend-container -p 3000:80 frontend
 ```
 4. Navigate to (http://localhost:3000)
 5. To terminate:
