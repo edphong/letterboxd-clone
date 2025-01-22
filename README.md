@@ -21,7 +21,7 @@ A Letterboxd-inspired web application built with RESTful APIs, leveraging TMDB f
 - **Docker**: To containerize the application for easy deployment and scalability.
 - **TMDB APIs**: Leveraging The Movie Database's APIs to fetch movie and TV show data.
 
-# Getting Started
+## Getting Started
 ### Prerequisites
 Ensure you have the latest version of Docker installed. You can verify your installation by running: 
 ```
