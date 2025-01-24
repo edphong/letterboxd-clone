@@ -6,13 +6,13 @@ import "../styles/NavBar.css";
 import logo from '../assets/logo.webp';
 
 const NavBar = () => {
-    const [searchQuery, setSearchQuery] = useState('');
+    const [searchQuery, setSearchQuery] = useState(''); // const indicates variables that cannot be reassigned, after their first value is set 
 
     const handleSearchChange = (e) => {
         setSearchQuery(e.target.value);
     };
 
-    const handleLogoClick = () => {
+    const handleLogoClick = () => { // myBacklog homepage  
         window.location.href = '/';
     };
 

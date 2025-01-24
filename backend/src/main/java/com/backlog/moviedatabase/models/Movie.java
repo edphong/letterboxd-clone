@@ -31,7 +31,14 @@ public class Movie {
     private long revenue;
     private List<SpokenLanguage> spoken_languages;
 
-    // Getters and Setters
+    private Integer collectionId;
+
+    public Movie(int id, String title, String posterUrl, Integer collectionId) {
+        this.id = id;
+        this.title = title;
+        this.collectionId = collectionId;
+    }
+
     public boolean isAdult() {
         return adult;
     }
@@ -240,15 +247,12 @@ public class Movie {
         this.spoken_languages = spoken_languages;
     }
 
-    // Inner classes for BelongsToCollection, Genre, ProductionCompany, ProductionCountry, and SpokenLanguage
-
     public static class BelongsToCollection {
         private int id;
         private String name;
         private String poster_path;
         private String backdrop_path;
 
-        // Getters and Setters
         public int getId() {
             return id;
         }
@@ -286,7 +290,6 @@ public class Movie {
         private int id;
         private String name;
 
-        // Getters and Setters
         public int getId() {
             return id;
         }
@@ -310,7 +313,6 @@ public class Movie {
         private String name;
         private String origin_country;
 
-        // Getters and Setters
         public int getId() {
             return id;
         }
@@ -348,7 +350,6 @@ public class Movie {
         private String iso_3166_1;
         private String name;
 
-        // Getters and Setters
         public String getIso_3166_1() {
             return iso_3166_1;
         }
@@ -371,7 +372,6 @@ public class Movie {
         private String iso_639_1;
         private String name;
 
-        // Getters and Setters
         public String getEnglish_name() {
             return english_name;
         }

@@ -9,7 +9,6 @@ public class TVShowReview {
     private String updated_at;
     private String url;
 
-    // Getters and Setters
     public String getAuthor() { return author; }
     public void setAuthor(String author) { this.author = author; }
 
@@ -37,7 +36,6 @@ public class TVShowReview {
         private String avatar_path;
         private Double rating; // Use Double to handle null ratings
     
-        // Getters and Setters
         public String getName() { return name; }
         public void setName(String name) { this.name = name; }
     

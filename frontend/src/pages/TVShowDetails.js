@@ -29,18 +29,14 @@ const TVShowDetails = () => {
             .catch(err => console.error('Error fetching reviews:', err));
     }, [tvShowId]);
 
-    if (loading || !tvShow) {
+    if (loading || !tvShow) { // loading
         return (
-            <div className="spinner-container">
-                <div className="spinner"></div>
+            <div>
             </div>
         );
     }
 
     const backdropUrl = `https://image.tmdb.org/t/p/original${tvShow.backdrop_path}`;
-
-    // Extract the year from the first air date
-    const firstAirYear = new Date(tvShow.first_air_date).getFullYear();
 
     return (    
         <div>
@@ -66,7 +62,7 @@ const TVShowDetails = () => {
                 </div>
                 <div className="details-info-container">
                 <Details
-                    title={`${tvShow.name} (${firstAirYear})`} // Display title with year
+                    title={`${tvShow.name}`} // Display title with year
                     tagline={tvShow.tagline}
                     overview={tvShow.overview}
                     genres={tvShow.genres}

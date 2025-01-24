@@ -1,4 +1,4 @@
-/* Backdrop container style */
+/* General Backdrop Container Style */
 .carousel-backdrop-container {
     position: relative;
     display: flex;
@@ -9,34 +9,34 @@
     overflow: hidden; /* Prevent image overflow */
 }
 
-/* Backdrop image with fade effect */
+/* Backdrop Image */
 .carousel-backdrop-image {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Maintain aspect ratio while filling the container */
+    object-fit: cover; 
     z-index: 1;
     mask-image: 
         linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 70%);
-    transition: opacity .3s;
+    transition: opacity 0.3s;
 }
 
-/* Content overlay on top of the backdrop */
+/* Hero Content Overlay */
 .carousel-hero-content {
-    position: relative; /* Keep the relative positioning */
-    z-index: 3;
+    position: relative;
+    z-index: 2;
     color: white;
     padding: 20px;
     max-width: 50%;
-    margin-left: 350px; /* Move content 20px to the right */
+    margin-left: 350px; /* Desktop-specific margin */
 }
 
 .carousel-hero-content h1 {
     font-size: 3rem;
     margin-bottom: 10px;
-    font-weight: bold; /* Making the title bold */
+    font-weight: bold;
 }
 
 .carousel-hero-content p {
@@ -52,11 +52,11 @@
     margin-bottom: 20px;
     line-height: 1.5;
     color: grey;
-    font-weight: 500; /* Slightly lighter than the title */
-    display: inline-block; /* Align it with the title properly */
+    font-weight: 500;
+    display: inline-block;
 }
 
-/* Carousel dot navigation */
+/* Dot Navigation */
 .carousel-dots-container {
     position: absolute;
     bottom: 20px;
@@ -64,7 +64,7 @@
     transform: translateX(-50%);
     display: flex;
     gap: 10px;
-    z-index: 3;
+    z-index: 2;
 }
 
 .carousel-dot {
@@ -80,46 +80,74 @@
     background-color: white;
 }
 
+/* General Carousel Container */
 .carousel-container {
     position: relative;
 }
 
-/* Mobile Specific Adjustments */
-@media (max-width: 600px) {
-    /* Backdrop container height adjustment for mobile */
+/* Tablet Adjustments */
+@media (max-width: 1024px) {
     .carousel-backdrop-container {
-        height: 50vh; /* Adjust height for better fitting on smaller screens */
+        height: 70vh; /* Reduce height for tablets */
     }
 
-    /* Hero content adjustments */
     .carousel-hero-content {
-        max-width: 100%; /* Allow content to take full width */
-        margin-left: 10px; /* Reduce margin */
-        padding: 10px; /* Reduce padding */
+        max-width: 70%; /* Allow more width */
+        margin-left: 20px; /* Reduce left margin */
+        padding: 15px; /* Reduce padding */
     }
 
-    /* Hero title adjustments */
     .carousel-hero-content h1 {
-        font-size: 1.8rem; /* Adjust font size for smaller screens */
+        font-size: 2.5rem; /* Adjust font size for tablets */
     }
 
     .carousel-hero-content p {
-        font-size: 0.9rem; /* Smaller text for better readability */
+        font-size: 1rem; /* Smaller text */
     }
 
     .carousel-hero-content h2 {
-        font-size: 1rem; /* Adjust subheading font size */
+        font-size: 1rem; /* Match paragraph size */
     }
 
-    /* Hero buttons */
-    .carousel-hero-buttons .hero-button {
-        font-size: 0.9rem; /* Adjust font size of buttons */
-        padding: 8px 16px; /* Adjust padding for better button size */
-    }
-
-    /* Dot navigation */
     .carousel-dots-container {
-        bottom: 10px; /* Move dots closer to the bottom */
-        gap: 5px; /* Reduce the gap between dots */
+        bottom: 15px; /* Adjust dot position */
+    }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 600px) {
+    .carousel-backdrop-container {
+        height: 50vh; /* Reduce height for mobile */
+    }
+
+    .carousel-hero-content {
+        max-width: 90%; /* Allow full width */
+        margin-left: 10px; /* Minimal left margin */
+        padding: 10px; /* Minimal padding */
+    }
+
+    .carousel-hero-content h1 {
+        font-size: 1.8rem; /* Smaller font size */
+        margin-bottom: 8px;
+    }
+
+    .carousel-hero-content p {
+        font-size: 0.9rem; /* Smaller text for readability */
+        margin-bottom: 15px;
+    }
+
+    .carousel-hero-content h2 {
+        font-size: 0.9rem; /* Smaller heading */
+        margin-bottom: 10px;
+    }
+
+    .carousel-dots-container {
+        bottom: 10px; /* Closer to the bottom */
+        gap: 5px; /* Reduce gap between dots */
+    }
+
+    .carousel-dot {
+        width: 6px; /* Smaller dots */
+        height: 6px;
     }
 }

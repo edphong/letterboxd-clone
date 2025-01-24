@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.bind.annotation.PathVariable;  
 
-@RestController // GET method 
-@RequestMapping("/api/movies") // concerned with grabbing movie ID's for movie details
+@RestController // Indicates that this class handles HTTP methods (GET, POST, PUT, DELETE), this case a GET method 
+@RequestMapping("/api/movies") // maps all http requests to this controller 
 public class MovieDetailsController {
 
-    @Autowired
+    @Autowired // keyword to inject http requests 
     private RestTemplate restTemplate;
 
     @Autowired

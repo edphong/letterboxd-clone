@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from "react"; // state [immutable value, mutable value to be updated], effect []
+import { Link } from "react-router-dom"; // library imported for handling page navigation
+import axios from "axios"; // handles HTTP requests (GET, POST, PUT, DELETE)
 import Carousel from "../components/Carousel";
 import "../styles/Dashboard.css";
 import "../styles/Carousel.css";
-import { Link } from "react-router-dom";
 
 const Dashboard = () => {
     const [movies, setMovies] = useState([]);
@@ -24,7 +24,7 @@ const Dashboard = () => {
         const fetchTopRatedMovies = axios.get("http://localhost:8080/api/movies/top-rated");
         const fetchTopRatedTVShows = axios.get("http://localhost:8080/api/tv-shows/top-rated");
 
-        Promise.all([
+        Promise.all([ // waits for all Promises to resolve before continuing
             fetchTrendingMovies,
             fetchNowShowingMovies,
             fetchTrendingTVShows,
@@ -41,7 +41,7 @@ const Dashboard = () => {
                     topRatedMoviesRes,
                     topRatedTVShowsRes,
                 ]) => {
-                    setMovies(trendingMoviesRes.data.slice(0, 18));
+                    setMovies(trendingMoviesRes.data.slice(0, 18)); // slices data into indexes of 18 
                     setNowShowingMovies(nowShowingMoviesRes.data.slice(0, 18));
                     setTrendingTVShows(trendingShowsRes.data.slice(0, 18));
                     setUpcomingMovies(upcomingMoviesRes.data.slice(0, 18));
@@ -54,24 +54,20 @@ const Dashboard = () => {
                 setError("Error fetching data: " + err.message);
                 setLoading(false); // Even if error occurs, stop loading state
             });
-    }, []); // Empty dependency array
+    }, []); // Empty dependency array ensures this only runs once 
 
-    if (loading) {
+    if (loading) { // when page is loading 
         return (
             <div>
-                {/* Display only the navbar or a loading spinner */}
                 <nav>
-                    {/* Your Navbar Code */}
                 </nav>
                 <div className="loading-state">
-                    {/* Optional: Add a loading spinner or message */}
-                    <p>Loading...</p>
                 </div>
             </div>
         );
     }
 
-    const renderMediaRow = (title, mediaItems, pathPrefix) => (
+    const renderMediaRow = (title, mediaItems, pathPrefix) => ( // poster rows 
         <div className="dashboard-container">
             <h2>{title}</h2>
             {error ? (
@@ -98,12 +94,8 @@ const Dashboard = () => {
 
     return (
         <div>
-            {/* Navbar should always be visible */}
             <nav>
-                {/* Your Navbar Code */}
             </nav>
-
-            {/* After loading, display all sections */}
             {/* Upcoming Movies Carousel */}
             <Carousel movies={upcomingMovies} />
             {/* Other Sections */}

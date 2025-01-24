@@ -10,7 +10,6 @@ public class MovieReviews {
     private int total_pages;
     private int total_results;
 
-    // Getters and Setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 

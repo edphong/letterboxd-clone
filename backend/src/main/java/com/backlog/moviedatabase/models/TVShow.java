@@ -36,8 +36,6 @@ public class TVShow {
     private double vote_average;
     private int vote_count;
 
-    // Getters and Setters
-
     public boolean isAdult() {
         return adult;
     }
@@ -349,7 +347,6 @@ public class TVShow {
         private int id;
         private String name;
 
-        // Getters and Setters
         public int getId() {
             return id;
         }
@@ -662,7 +659,6 @@ public class TVShow {
         private String iso_639_1;
         private String name;
 
-        // Getters and Setters
         public String getEnglish_name() {
             return english_name;
         }

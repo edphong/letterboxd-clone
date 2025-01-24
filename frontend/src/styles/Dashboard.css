@@ -102,3 +102,6 @@
         padding-left: 630px; /* Larger padding for larger screens */
     }
 }
+.carousel-dot:hover { 
+    color: rgb(66, 62, 62);
+}

@@ -3,17 +3,17 @@ import { Link } from 'react-router-dom';
 import "../styles/Dashboard.css";
 
 const Carousel = ({ movies }) => {
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(0); // states are dynamic, mutable data of a component 
 
-    useEffect(() => {
-        if (movies.length === 0) return;
+    useEffect(() => { // hook that enables side effects (timers, fetching data) in components 
+        if (movies.length === 0) return; // error handler 
         const interval = setInterval(() => {
             setCurrentIndex((prevIndex) => (prevIndex + 1) % movies.length);
-        }, 5000);
+        }, 5000); // timer of 5 seconds 
         return () => clearInterval(interval);
     }, [movies]);
 
-    const handleDotClick = (index) => setCurrentIndex(index);
+    const handleDotClick = (index) => setCurrentIndex(index); // handles dot navigation
 
     // Handle scroll functionality and prevent page scrolling
     const handleWheel = (event) => {
@@ -39,7 +39,7 @@ const Carousel = ({ movies }) => {
         };
     });
 
-    return (
+    return ( // returns backdrop attribute of movies from API and backend
         movies.length > 0 && (
             <div className="carousel-backdrop-container">
                 <Link to={`/movie/${movies[currentIndex].id}`}>

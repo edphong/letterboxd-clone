@@ -13,8 +13,8 @@ const MovieDetails = () => {
     const [loadingReviews, setLoadingReviews] = useState(true);
 
     useEffect(() => {
-        axios
-        .get(`http://localhost:8080/api/movies/details/${movieId}`)
+        axios // HTTP requests, to fetch APIs 
+        .get(`http://localhost:8080/api/movies/details/${movieId}`) // on click from dashboard, get movie ID
         .then(response => setMovie(response.data))
         .catch(err =>
             setMovieError('Error fetching movie details: ' + err.message)
@@ -32,27 +32,29 @@ const MovieDetails = () => {
         });
     }, [movieId]);
 
-    if (loadingReviews || !movie) {
+    if (loadingReviews || !movie) { // loading
         return (
-            <div className="spinner-container">
-                <div className="spinner"></div>
+            <div>
             </div>
         );
     }
 
-    if (movieError) {
+    if (movieError) { // error handling
         return <p style={{ color: 'red' }}>{movieError}</p>;
     }
 
-    if (reviewsError) { 
+    if (reviewsError) { // error handling
         return <p style={{ color: 'red'}}>{reviewsError}</p>;
     }
 
+    // Format the runtime into hours and minutes
+    const runtimeInMinutes = movie.runtime;
+    const hours = Math.floor(runtimeInMinutes / 60); // Get the full hours
+    const minutes = runtimeInMinutes % 60; // Get the remaining minutes
+    const formattedRuntime = `${hours}h ${minutes}m`;
+
     const backdropUrl = `https://image.tmdb.org/t/p/original${movie.backdrop_path}`;
 
-    // Determine if it's a movie or TV show based on the presence of the 'first_air_date' field
-    const isMovie = movie.release_date !== undefined;
-    
     return (
         <div>
             {/* Backdrop container */}
@@ -80,9 +82,10 @@ const MovieDetails = () => {
                         tagline={movie.tagline}
                         overview={movie.overview}
                         genres={movie.genres}
+                        belongsToCollection={movie.belongs_to_collection}
                         additionalInfo={[
                             { label: 'Release Date', value: movie.release_date },
-                            { label: 'Runtime', value: `${movie.runtime} minutes` }
+                            { label: 'RUNTIME', value: formattedRuntime }
                         ]}
                         creators={movie.production_companies}
                         spokenLanguages={movie.spoken_languages}

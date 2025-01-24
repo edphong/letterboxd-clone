@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-@Configuration
+@Configuration // configures and sets up beans 
 public class WebConfig implements WebMvcConfigurer {
 
     @Override
@@ -17,4 +17,4 @@ public class WebConfig implements WebMvcConfigurer {
     }
 }
 
-// cross origin resourcec sharing class impleneted in web browsers to control how resources on a server can be accessed by web pages from different orgins 
+// by default, modern browsers block cross-origin requests for security purposes. CORS' purpose is to open gateways to enable cross-origin communication.  

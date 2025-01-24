@@ -2,7 +2,7 @@ import React from 'react';
 import "../styles/SearchBar.css";
 import searchIcon from '../assets/search.webp'; // Import the image
 
-const SearchBar = ({ searchQuery, handleSearchChange }) => {
+const SearchBar = ({ searchQuery, handleSearchChange }) => { // immutable (searchQuery) and mutable (handleSearchChange) components of the search query 
     return (
         <div className="navbar-search">
             <input

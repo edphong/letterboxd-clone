@@ -21,7 +21,7 @@ RUN npm run build
 # stage 2: Serve the application
 FROM nginx:alpine
 
-# copy the built React app to Nginx's default HTML directory, where the issue lies 
+# copy the built React app to Nginx's default HTML directory
 COPY --from=frontend-build /app/build /usr/share/nginx/html
 
 # expose port, build with port 3000 

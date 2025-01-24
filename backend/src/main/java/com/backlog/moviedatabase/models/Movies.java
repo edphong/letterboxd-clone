@@ -4,11 +4,10 @@ import java.util.List;
 
 public class Movies {
     private int page;
-    private List<Movie> results; // List of movies
+    private List<Movie> results; 
     private int totalPages;
     private int totalResults;
 
-    // Getters and Setters
     public int getPage() { return page; }
     public void setPage(int page) { this.page = page; }
 

@@ -1,0 +1,190 @@
+/* Ensure the body and html take up full height */
+body, html {
+    height: 100%;
+    margin: 0;
+    background-color: #121212; /* Dark background like Letterboxd */
+    color: #FFFFFF; /* White text color for readability */
+    font-family: 'Graphik', sans-serif; /* Default body font */
+}
+
+/* Adjusting the collection container to match the details container */
+.collection-container {
+    font-family: 'Montserrat', sans-serif; /* Apply only to the dashboard */
+    color: #FFFFFF; /* Set text color to white */
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 100vw; /* Prevent the container from going beyond the viewport width */
+    overflow-x: hidden; /* Prevent horizontal scrolling in the container */
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+/* Collection container heading */
+.collection-container h1 {
+    margin-bottom: 10px;
+    font-size: 2rem;
+    color: #FFFFFF; /* White text for heading */
+}
+
+/* Collection container paragraph styling */
+.collection-container p {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    color: #ccc; /* Subtle text color */
+}
+
+.collection-overview { 
+    width: 1200px; /* Default width */
+}
+
+/* Collection movies grid container: horizontally align posters from left to right */
+.collection-movies {
+    display: flex; /* Use flexbox for horizontal layout */
+    flex-wrap: wrap; /* Allow wrapping of items if needed */
+    gap: 15px; /* Space between posters */
+    flex-direction: row; /* Align items in a row */
+    justify-content: flex-start; /* Ensure items align to the left */
+    align-items: flex-start; /* Ensure alignment at the top */
+    margin: 0; /* Remove any default margin */
+    padding: 0; /* Remove any default padding */
+    z-index: 1; /* Keeps content above background */
+    width: 66%; /* Make sure the container takes full width */
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+/* Individual movie card styling */
+.collection-movie-card {
+    text-align: center;
+    background-color: rgba(18, 18, 18, 0.7); /* Slightly transparent dark background */
+    border-radius: 8px; /* Rounded corners */
+    padding: 10px; /* Add padding to card */
+    max-width: 180px; /* Limit the width of movie cards */
+    flex-shrink: 0; /* Prevent shrinking of movie cards */
+}
+
+/* Movie poster styling */
+.collection-movie-poster {
+    width: 100%;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.collection-movie-poster:hover {
+    transform: scale(1.05); /* Slightly enlarges the poster for a smooth hover effect */
+    box-shadow: 0 0 1px 2px #00ff00; /* Green glow outline */
+    filter: brightness(0.5); /* Darkens the poster slightly */
+}
+
+/* Movie title styling */
+.collection-movie-title {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #ccc; /* Subtle text color for titles */
+    text-decoration: none; /* Ensure no underline */
+}
+
+/* Styling for backdrop with mask effect */
+.collection-header-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Maintain aspect ratio while filling the container */
+    z-index: 0;        /* Lower z-index to sit beneath the collection container */
+    mask-image: 
+        linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 70%);
+    -webkit-mask-image: 
+        linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 70%);
+    transition: opacity 0.3s;
+}
+
+.belong-to-header-container {
+    background-size: cover;
+    background-position: top center;
+    height: 40vh; /* Adjust height based on preference */
+    border-bottom: 5px solid #fff;
+}
+
+.belong-to-content {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    margin-top: -50px;
+    z-index: 1;
+}
+
+/* Style the custom divider */
+.belongs-to-divider {
+    width: 66%; /* Default width */
+    margin: 20px auto; /* Center the divider and add vertical space */
+    border-top: 1px solid #ccc; /* Add a subtle line */
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .collection-container {
+        flex-direction: column; /* Stack poster and details */
+        align-items: center; /* Center content */
+    }
+
+    .collection-movie-card {
+        margin: 0 auto;
+        max-width: 90%;
+    }
+
+    .collection-movie-poster {
+        max-width: 200px; /* Reduce poster size */
+    }
+
+    .collection-overview {
+        width: 90%; /* Adjust overview width for medium screens */
+    }
+
+    .belongs-to-divider {
+        width: 90%; /* Adjust divider width for medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .collection-container h1 {
+        font-size: 1.5rem; /* Adjust heading size */
+    }
+
+    .collection-container p {
+        font-size: 1rem; /* Adjust paragraph size */
+    }
+
+    .collection-movies {
+        gap: 10px; /* Reduce gap between grid items */
+    }
+
+    .collection-overview {
+        width: 100%; /* Make the overview full width on smaller screens */
+        padding: 0 15px; /* Optional padding for better spacing */
+    }
+
+    .belongs-to-divider {
+        width: 90%; /* Match divider width with the overview */
+    }
+}
+
+@media (max-width: 480px) {
+    .collection-container {
+        padding: 10px; /* Reduce padding */
+    }
+
+    .collection-movie-card {
+        max-width: 100%; /* Allow movie cards to take full width */
+    }
+
+    .collection-movie-title {
+        font-size: 0.9rem; /* Smaller font size for titles */
+    }
+}

@@ -66,8 +66,10 @@ body, html {
 }
 
 /* Heading and text color adjustments */
-h2, p, ul li {
+p, ul li, h3 {
     color: #FFFFFF; /* Ensure text remains white */
+    font-family: 'Graphik', sans-serif; /* List font */
+    font-size: 17px;
 }
 
 
@@ -88,7 +90,6 @@ ul li {
 /* Review list styling */
 .details-reviews-list {
     margin-top: 40px;
-    padding: 5px;
 }
 
 .details-reviews-title {
@@ -110,6 +111,22 @@ ul li {
     font-weight: normal;
 }
 
+
+.details-tagline { 
+    font-style: italic;
+}
+
+.details-belongs-to img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animation for hover effects */
+}
+
+.details-belongs-to img:hover {
+    transform: scale(1.05); /* Slightly enlarges the poster for a smooth hover effect */
+    box-shadow: 0 0 1px 2px #00ff00; /* Green glow outline */
+    filter: brightness(0.5); /* Darkens the poster slightly */
+}
+
+
 .divider {
     border: none;
     border-top: 3px solid #777; /* Thin line with subtle color */
@@ -121,7 +138,72 @@ ul li {
     border: none;
     border-top: 1px solid #777; /* Thin line with subtle color */
     margin: 10px 0; /* Adds space above and below the line */
-    width: 100%; 
+    width: 100%;
+    margin-bottom: 20px; /* Adjust the value to control spacing */ 
 }
+
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .details-movie-container {
+        flex-direction: column; /* Stack poster and details */
+        align-items: center; /* Center content */
+    }
+
+    .details-poster-container, .details-info-container {
+        margin: 0 auto;
+        max-width: 90%;
+    }
+
+    .details-movie-poster {
+        max-width: 200px; /* Reduce poster size */
+    }
+}
+
+@media (max-width: 768px) {
+    .details-title {
+        font-size: 30px; /* Adjust title size */
+    }
+
+    .details-year {
+        font-size: 25px; /* Adjust year size */
+    }
+
+    .details-info-container {
+        gap: 15px; /* Smaller gaps between sections */
+    }
+
+    .details-reviews-list {
+        margin-top: 20px; /* Reduce margin */
+    }
+}
+
+@media (max-width: 480px) {
+    .details-movie-container {
+        padding: 10px; /* Reduce padding */
+    }
+
+    .details-poster-container {
+        max-width: 150px; /* Smaller poster */
+    }
+
+    .details-info-container {
+        padding: 10px; /* Reduce padding */
+    }
+
+    .details-title {
+        font-size: 24px; /* Smaller title */
+    }
+
+    .details-year {
+        font-size: 20px; /* Smaller year */
+    }
+
+    ul li {
+        padding: 5px; /* Smaller list padding */
+        font-size: 14px; /* Smaller font size */
+    }
+}
+
 
 

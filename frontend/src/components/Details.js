@@ -1,8 +1,9 @@
-import React from 'react';
+import React from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import "../styles/Details.css";
 
 const Details = ({ 
-    title,
+    title, 
     tagline,
     overview,
     genres,
@@ -10,13 +11,23 @@ const Details = ({
     creators,
     spokenLanguages,
     reviews,
-    isMovie // New prop to distinguish between movie and TV show
+    belongsToCollection,
+    isMovie 
 }) => {
-    // Extract Release Date or First Air Date depending on the content type (movie or TV show)
+    const navigate = useNavigate(); // Initialize the navigate hook
+
+    // Extract Release Date or First Air Date depending on the content type
     const releaseDateLabel = isMovie ? 'Release Date' : 'First Air Date';
     const releaseDateInfo = additionalInfo.find(info => info.label === releaseDateLabel);
     const releaseDateValue = releaseDateInfo ? new Date(releaseDateInfo.value) : null;
-    const releaseYear = releaseDateValue ? releaseDateValue.getFullYear() : null;
+    const releaseYear = releaseDateValue ? releaseDateValue.getFullYear() : null; 
+
+    // Redirect to collection page
+    const handlePosterClick = () => {
+        if (belongsToCollection?.id) {
+            navigate(`/movie/collection/${belongsToCollection.id}`);
+        }
+    };
 
     return (
         <div className="details-content">
@@ -29,7 +40,7 @@ const Details = ({
             <p className="details-overview">{overview}</p>
 
             {/* Display Genres */}
-            <p className="details-genres"><strong>Genres: </strong>{genres.map(genre => genre.name).join(", ")}</p>
+            <p className="details-genres"><strong>GENRES: </strong>{genres.map(genre => genre.name).join(", ")}</p>
 
             {/* Display Additional Info excluding date info */}
             {additionalInfo.filter(info => info.label !== releaseDateLabel).map((info, index) => (
@@ -41,7 +52,7 @@ const Details = ({
             {/* Display Created By */}
             {creators && creators.length > 0 && (
                 <p className="details-created-by">
-                    <strong>Created By: </strong>
+                    <strong>CREATED BY: </strong>
                     {creators.map((creator, index) => (
                         <span key={creator.id}>
                             {creator.name}{index < creators.length - 1 && ', '}
@@ -52,12 +63,13 @@ const Details = ({
 
             {/* Display Languages */}
             <div className="details-languages">
-                <strong>Languages: </strong>
+                <strong>LANGUAGES: </strong>
                 {spokenLanguages.length > 0 ? (
                     <span className="languages-list">
                         {spokenLanguages.map((language, index) => (
                             <span key={language.iso_639_1}>
-                                {language.name}{index < spokenLanguages.length - 1 && ', '}
+                                {index > 0 && ', '}
+                                {language.name}
                             </span>
                         ))}
                     </span>
@@ -65,11 +77,25 @@ const Details = ({
                     <span className="no-languages">No spoken languages available.</span>
                 )}
             </div>
+
+            {/* Display belongsToCollection if available */}
+            {belongsToCollection && (
+                <div className="details-belongs-to">
+                    <h3>RELATED</h3>
+                    <hr className="comment-divider" />
+                    <img
+                        src={`https://image.tmdb.org/t/p/original${belongsToCollection.poster_path}`}
+                        alt={belongsToCollection.name}
+                        style={{ width: '140px', height: '190px', borderRadius: '3px', cursor: 'pointer' }}
+                        onClick={handlePosterClick} // Add click handler
+                    />
+                </div>
+            )}
             
             {/* Display Reviews */}
             {reviews && reviews.length > 0 && (
                 <div className="details-reviews-list">
-                    <p className="details-reviews-title">Recent Reviews</p>
+                    <p className="details-reviews-title">RECENT REVIEWS</p>
                     <hr className="divider" />
                     {reviews.map((review, index) => (
                         <div key={review.id} className="review-item">
