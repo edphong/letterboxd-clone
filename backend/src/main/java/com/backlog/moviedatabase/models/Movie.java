@@ -31,12 +31,10 @@ public class Movie {
     private long revenue;
     private List<SpokenLanguage> spoken_languages;
 
-    private Integer collectionId;
 
-    public Movie(int id, String title, String posterUrl, Integer collectionId) {
+    public Movie(int id, String title) {
         this.id = id;
         this.title = title;
-        this.collectionId = collectionId;
     }
 
     public boolean isAdult() {
