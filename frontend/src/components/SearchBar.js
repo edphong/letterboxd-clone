@@ -7,6 +7,7 @@ import searchIcon from '../assets/search.webp';
 const SearchBar = () => {
     const [query, setQuery] = useState("");
     const [suggestions, setSuggestions] = useState([]);
+    const [isLoading, setIsLoading] = useState(false); // Loading state for search
     const searchBarRef = useRef(null);
     const navigate = useNavigate(); // Initialize navigation
 
@@ -27,11 +28,14 @@ const SearchBar = () => {
         setQuery(newQuery);
 
         if (newQuery.length > 1) {
+            setIsLoading(true); // Start loading
             try {
                 const response = await axios.get(`http://localhost:8080/api/search?query=${newQuery}`);
                 setSuggestions(response.data); // Now response contains both title, id, and mediaType
             } catch (error) {
                 console.error("Error fetching search results:", error);
+            } finally {
+                setIsLoading(false); // Stop loading after the request completes
             }
         } else {
             setSuggestions([]);
@@ -58,7 +62,11 @@ const SearchBar = () => {
                 className="search-input"
                 style={{ backgroundImage: `url(${searchIcon})` }}
             />
-            {suggestions.length > 0 ? (
+            {isLoading ? (
+                <div className="loading-spinner">
+                    <div className="spinner"></div>
+                </div>
+            ) : suggestions.length > 0 ? (
                 <ul className="search-dropdown">
                     {suggestions.map((item) => (
                         <li key={item.id} onClick={() => handleSuggestionClick(item.id, item.mediaType)}>

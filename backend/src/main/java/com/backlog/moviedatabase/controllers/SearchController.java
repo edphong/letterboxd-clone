@@ -2,7 +2,6 @@ package com.backlog.moviedatabase.controllers;
 
 import com.backlog.moviedatabase.config.ApiKeyProvider;
 import com.backlog.moviedatabase.services.TrieService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -46,9 +45,9 @@ public class SearchController {
         String apiKey = apiKeyProvider.getApiKey();
         String url = "https://api.themoviedb.org/3/search/multi?api_key=" + apiKey + "&query=" + query;
         Map<String, Object> response = restTemplate.getForObject(url, Map.class);
-
+    
         List<Map<String, Object>> results = response != null ? (List<Map<String, Object>>) response.get("results") : new ArrayList<>();
-
+    
         // Extract titles, ids, and media types (movie or tv show)
         List<Map<String, Object>> movieData = new ArrayList<>();
         for (Map<String, Object> item : results) {
@@ -56,7 +55,7 @@ public class SearchController {
             String name = (String) item.get("name");
             Integer id = (Integer) item.get("id");
             String mediaType = (String) item.get("media_type");
-
+    
             if ((title != null || name != null) && id != null) {
                 if (mediaType != null && (mediaType.equals("movie") || mediaType.equals("tv"))) {
                     String displayTitle = (mediaType.equals("movie")) ? title : name;
@@ -66,6 +65,7 @@ public class SearchController {
         }
         return movieData;
     }
+    
 
     private Map<String, Object> createSearchResult(String title, Integer id, String mediaType) {
         Map<String, Object> result = new HashMap<>();
